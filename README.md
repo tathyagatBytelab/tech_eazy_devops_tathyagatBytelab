@@ -1,123 +1,139 @@
-TechEazy DevOps Internship Project
+# TechEazy DevOps Internship Project
 
-🔧 Project Overview
+## Project Overview
 
 This project was developed as part of the TechEazy Consulting DevOps Internship. It consists of two main assignments:
 
-Assignment 1: Setup an EC2 instance that runs a Spring Boot application and uploads application logs to S3.
+* **Assignment 1:** Setup an EC2 instance that runs a Spring Boot application and uploads application logs to S3.
+* **Assignment 2:** Implement CI/CD using GitHub Actions to deploy the application automatically.
 
-Assignment 2: Implement CI/CD using GitHub Actions to deploy the application automatically.
+---
 
-🌐 Technologies Used
+## Technologies Used
 
-AWS EC2: Hosts the Spring Boot application
+* **AWS EC2:** Hosts the Spring Boot application
+* **AWS S3:** Stores application logs
+* **AWS IAM:** Manages instance profile and permissions
+* **GitHub Actions:** CI/CD pipeline
+* **Bash:** Deployment and log upload scripts
+* **Spring Boot:** Java web application framework
 
-AWS S3: Stores application logs
+---
 
-AWS IAM: Manages instance profile and permissions
+## Project Structure
 
-GitHub Actions: CI/CD pipeline
+Got it! I've removed the stars from the subheadings in the README.md and ensured the formatting remains clean and pretty.
 
-Bash: Deployment and log upload scripts
+Here's the updated version:
 
-Spring Boot: Java web application framework
+Markdown
 
+# TechEazy DevOps Internship Project
 
-📁Project Structure
- tech_eazy_devops_tathyagatBytelab/
- ├── .github/
- │   └── workflows/
- │       └── deploy.yml              # GitHub Actions CI/CD workflow
- ├── config/
- │   ├── dev_config.json            # Dev environment config
- │   └── prod_config.json           # Placeholder for prod
- ├── scripts/
- │   ├── deploy_ec2.sh              # Deploys EC2 and sets up app
- │   └── upload_logs.sh             # Uploads logs to S3
- ├── terraform/
- │   ├── main.tf                    # Terraform infra (optional)
- │   └── variables.tf
- ├── trust-policy.json              # Trust policy for IAM role
- ├── README.md                      # Project documentation
+## Project Overview
 
+This project was developed as part of the TechEazy Consulting DevOps Internship. It consists of two main assignments:
 
-🚀 How to Deploy
+* **Assignment 1:** Setup an EC2 instance that runs a Spring Boot application and uploads application logs to S3.
+* **Assignment 2:** Implement CI/CD using GitHub Actions to deploy the application automatically.
 
-1. Create and configure EC2 instance
+---
 
- ./scripts/deploy_ec2.sh dev
+## Technologies Used
 
-This script:
+* **AWS EC2:** Hosts the Spring Boot application
+* **AWS S3:** Stores application logs
+* **AWS IAM:** Manages instance profile and permissions
+* **GitHub Actions:** CI/CD pipeline
+* **Bash:** Deployment and log upload scripts
+* **Spring Boot:** Java web application framework
 
-Imports your SSH key to AWS
+---
 
-Launches an EC2 instance
+## Project Structure
 
-Installs Java, clones the app repo, and runs the app
+tech_eazy_devops_tathyagatBytelab/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # GitHub Actions CI/CD workflow
+├── config/
+│   ├── dev_config.json            # Dev environment config
+│   └── prod_config.json           # Placeholder for prod
+├── scripts/
+│   ├── deploy_ec2.sh              # Deploys EC2 and sets up app
+│   └── upload_logs.sh             # Uploads logs to S3
+├── terraform/
+│   ├── main.tf                    # Terraform infra (optional)
+│   └── variables.tf
+├── trust-policy.json              # Trust policy for IAM role
+├── README.md                      # Project documentation
 
-2. Access the app
+---
 
-Once the EC2 is live, access the app:
+## How to Deploy
 
- http://<public-ip>:8080/hello
+1.  **Create and configure EC2 instance**
 
- 3. Upload logs to S3
+    ```bash
+    ./scripts/deploy_ec2.sh dev
+    ```
 
-Run this from inside the EC2 instance:
+    This script:
+    * Imports your SSH key to AWS
+    * Launches an EC2 instance
+    * Installs Java, clones the app repo, and runs the app
 
- ./scripts/upload_logs.sh dev
+2.  **Access the app**
 
- This uploads app.log to your S3 bucket.
+    Once the EC2 is live, access the app:
 
-🔁 CI/CD with GitHub Actions 
- Workflow: .github/workflows/deploy.yml
+    ```
+    http://<public-ip>:8080/hello
+    ```
 
-Trigger: Push to main
+3.  **Upload logs to S3**
+
+    Run this from inside the EC2 instance:
+
+    ```bash
+    ./scripts/upload_logs.sh dev
+    ```
+
+    This uploads `app.log` to your S3 bucket.
+
+---
+
+## CI/CD with GitHub Actions
+
+* **Workflow:** `.github/workflows/deploy.yml`
+* **Trigger:** Push to `main`
 
 It connects to EC2 via SSH and redeploys the application automatically.
 
 Ensure you set the following GitHub secrets:
 
-EC2_HOST
+* `EC2_HOST`
+* `EC2_USER`
+* `EC2_KEY` (base64 encoded private key)
 
-EC2_USER
+---
 
-EC2_KEY (base64 encoded private key)
+## Issues Faced & Fixes
 
-⚠️ Issues Faced & Fixes
+| Issue                         | Fix                                              |
+| :---------------------------- | :----------------------------------------------- |
+| SSH timeout                   | Added inbound rule for port 22 in security group |
+| Java app crashed on port 80   | Ran app on port 8080 instead                     |
+| Git push error main not found | Renamed branch: `git branch -M main`             |
+| EC2 didn’t have S3 access     | Attached IAM role to EC2                         |
+| `app.log` upload failed       | Fixed IAM permissions and log path               |
 
-Issue
+---
 
-Fix
+## Pull Request Workflow
 
-SSH timeout
-
-Added inbound rule for port 22 in security group
-
-Java app crashed on port 80
-
-Ran app on port 8080 instead
-
-Git push error main not found
-
-Renamed branch: git branch -M main
-
-EC2 didn’t have S3 access
-
-Attached IAM role to EC2
-
-app.log upload failed
-
-Fixed IAM permissions and log path
-
-🔄 Pull Request Workflow
-
-Create new branch: git checkout -b feature-xyz
-
-Push code: git push origin feature-xyz
-
-Open PR on GitHub
-
-Add reviewer, get approval
-
-Click Merge Pull Request
+1.  **Create new branch:** `git checkout -b feature-xyz`
+2.  **Push code:** `git push origin feature-xyz`
+3.  **Open PR on GitHub**
+4.  **Add reviewer, get approval**
+5.  **Click Merge Pull Request**
