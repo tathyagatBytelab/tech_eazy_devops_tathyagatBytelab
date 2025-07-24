@@ -20,6 +20,8 @@ This project was developed as part of the TechEazy Consulting DevOps Internship.
 
 ---
 
+```
+
 ## 📁 Project Structure
 tech_eazy_devops_tathyagatBytelab/
 ├── .github/
@@ -37,7 +39,8 @@ tech_eazy_devops_tathyagatBytelab/
 ├── trust-policy.json # Trust policy for IAM role
 ├── README.md # Project documentation
 
-
+ ``` 
+ 
 ---
 
 ## 🚀 How to Deploy
