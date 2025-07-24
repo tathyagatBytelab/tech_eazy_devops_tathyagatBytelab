@@ -20,6 +20,11 @@ This project was developed as part of the TechEazy Consulting DevOps Internship.
 
 ---
 
+<<<<<<< HEAD
+=======
+```
+
+>>>>>>> main
 ## 📁 Project Structure
 tech_eazy_devops_tathyagatBytelab/
 ├── .github/
@@ -36,8 +41,13 @@ tech_eazy_devops_tathyagatBytelab/
 │ └── variables.tf # Terraform variables
 ├── trust-policy.json # Trust policy for IAM role
 ├── README.md # Project documentation
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 
+ ``` 
+ 
 ---
 
 ## 🚀 How to Deploy
